@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CEDT Office</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: "Kanit", sans-serif;
+        margin: 20px;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(
+      127deg,
+      rgb(209 249 252 / 100%),
+      rgb(209 249 252 / 0%) 70.71%
+    ),
+    linear-gradient(217deg, rgb(226 227 250 / 100%), rgb(226 227 250 / 0%) 70.71%),
+    linear-gradient(336deg, rgb(237 216 61 / 80%), rgb(237 216 61 / 0%) 70.71%);
+      }
+      p {
+        margin: 0 ;
+        padding: 0;
+      }
+      hr {
+        margin: 0;
+        margin-right: 10px;
+        margin-left: 10px;
+        border-color: #cbcbcb39;
+      }
+      .icon-image {
+        width: 30px;
+        height: 30px;
+      }
+      .image-container {
+        margin: 0;
+        padding: 0;
+      }
+      .card-topic {
+        font-size: 18px;
+        font-weight: 400;
+        position: absolute;
+        margin-left: 40px;
+      }
+      .card-value {
+        font-size: 35px;
+        font-weight: 400;
+      }
+      .card-unit {
+        font-size: 24px;
+        padding-left: 10px;
+      }
+      .same-line {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        position: absolute;
+        bottom: 10px;
+        right: 20px;
+      }
+      .background-image {
+        position:absolute;
+        width: 170px;
+        height: 170px;
+        top: 30px;
+        right: 30px;
+      }
+      .dashboard {
+      }
+      .header {
+        display: flex-start;
+        justify-content: center;
+        align-items: center;
+        font-weight: 400;
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+      .card {
+        position: relative;
+        display: inline-block;
+        width: 170px;
+        min-width: 170px;
+        padding: 15px;
+        height: 70px;
+        border-radius: 15px;
+        background: #fff;
+        color: #333;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .card-square {
+        position: relative;
+        margin-top: 40px;
+        margin-bottom: 10px;
+        width: 60px;
+        height: 60px;
+        padding: 10px;
+        border-radius: 15px;
+        background: #fff;
+        color: #333;
+        box-shadow: 0 2px 5px rgba(226, 227, 250, 1);
+      }
+      .card-table {
+        margin-top: 40px;
+        margin-bottom: 10px;
+        width: 300px;
+        height: 200px;
+        padding: 5px;
+        border-radius: 15px;
+        background: #fff;
+        color: #333;
+        box-shadow: 0 2px 5px rgba(226, 227, 250, 1);
+      }
+      .table-row {
+        width: 100;
+        height: 50%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .table-col {
+        width: 33%;
+        height: 100%;
+        position: relative;
+      }
+      .card-room-num {
+        font-size: 13px;
+        font-weight: 400;
+        position: absolute;
+        /* Positioned relative to the outer container */
+        top: 5px;
+        /* Align to the bottom */
+        left: 10px;
+      }
+      .status-green {
+        width: 40px;
+        height: 40px;
+        background-color: #77dd76;
+        border-radius: 50%;
+        position: absolute;
+        top: calc(50% + 5px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        box-shadow: 0 2px 5px rgba(226, 227, 250, 0.1);
+      }
+      .status-yellow {
+        width: 40px;
+        height: 40px;
+        background-color: #FFFF00;
+        border-radius: 50%;
+        position: absolute;
+        top: calc(50% + 5px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        box-shadow: 0 2px 5px rgba(226, 227, 250, 0.1);
+      }
+      .status-red {
+        width: 40px;
+        height: 40px;
+        background-color: #ff6962;
+        border-radius: 50%;
+        position: absolute;
+        top: calc(50% + 5px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        box-shadow: 0 2px 5px rgba(226, 227, 250, 0.1);
+      }
+      .div-info {
+        display: flex;
+        justify-content: space-between;
+        column-gap: 15px;
+        margin-bottom: 15px;
+      }
+      .div-telephone {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 15px;
+        background: white;
+        color: #333;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .telephone-topic {
+        font-size: 18px;
+        font-weight: 400;
+        position: absolute;
+        margin-bottom: 15px;
+      }
+      .div-workplace {
+        position: relative;
+        display: flex; 
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 15px;
+        background: #fff;
+        color: #333;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .workplace-topic {
+        font-size: 18px;
+        font-weight: 400;
+        position: absolute;
+      }
+      .vertical-line {
+        width: 1px;
+        height: 80%;
+        background-color: #d6d6d6;
+      }
+      .horizontal-line {
+        width: 100%;
+        height: 1px;
+        background-color: #d6d6d6;
+      }
+      
+
+      @media (max-width: 680px) {
+        .dashboard {
+          width: 100%;
+          margin: 20px;
+        }
+        .div-info {
+          flex-wrap: wrap;
+          gap: 0;
+          row-gap: 15px;
+        }
+        .card {
+          width: calc(50% - 40px);
+        }
+        .div-telephone {
+          flex-wrap: wrap;
+        }
+      }
+      @media (max-width: 480px) {
+        .div-info {
+          flex-wrap: wrap;
+          gap: 20;
+        }
+        .card {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+
+  <body>
+    <div class="dashboard">
+      <img src="images/sun.png" alt="Home Background" class="background-image">
+      <div class="header">
+        <div class="image-container">
+          <img src="images/home.svg" alt="Home Icon" class="icon-image">
+        </div>
+        <p>CEDT Office</p>
+      </div>
+      <div class="div-info">
+        <div class="card">
+          <p class="card-topic">Temperature</p>
+          <img src="images/weather.png" alt="Home Icon" class="icon-image">
+          <div class="same-line">
+            <p class="card-value" id = "tempurature_celsius">25</p>
+            <p class="card-unit">°c</p>
+          </div>
+        </div>
+        <div class="card">
+          <p class="card-topic">Humidity</p>
+          <img src="images/humidity.png" alt="Home Icon" class="icon-image">
+          <div class="same-line">
+            <p class="card-value" id="humidity">48</p>
+            <p class="card-unit">%</p>
+          </div>
+        </div>
+        <div class="card">
+          <p class="card-topic">Air quality</p>
+          <img src="images/wind.png" alt="Home Icon" class="icon-image">
+          <div class="same-line">
+            <p class="card-value" id ="AirQuality">12</p>
+            <p class="card-unit">aqi</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="div-telephone">
+        <p class="telephone-topic">Telephone Room</p>
+        <div class="card-square">
+          <p class="card-room-num">📞 01</p>
+          <div class="status"></div>
+        </div>
+        <div class="card-square">
+          <p class="card-room-num">📞 02</p>
+          <div class="status-red"></div>
+        </div>
+        <div class="card-square">
+          <p class="card-room-num">📞 03</p>
+          <div class="status-green"></div>
+        </div>
+        <div class="card-square">
+          <p class="card-room-num">📞 04</p>
+          <div class="status-yellow"></div>
+        </div>
+      </div>
+
+      <div class="div-workplace">
+        <p class="workplace-topic">Workplace Room</p>
+        <div class="card-table">
+          <div class="table-row">
+            <div class="table-col">
+              <div class="Tstatus">A01</div>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="table-col">
+              <div class="status-green">A02</div>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="table-col">
+              <div class="status-red">A03</div>
+            </div>
+          </div>
+          <hr />
+          <div class="table-row">
+            <div class="table-col">
+              <div class="status-red">A04</div>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="table-col">
+              <div class="status-green">A05</div>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="table-col">
+              <div class="status-green">A06</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- the scripts for products you want to access must be added-->
+
+	  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+	  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      //import { initializeApp } from "firebase/app";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyAiM5ZKwGSgOHp9vzCjyoE9BxRA2G8E-YY",
+        authDomain: "smarthome-embedded.firebaseapp.com",
+        databaseURL: "https://smarthome-embedded-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "smarthome-embedded",
+        storageBucket: "smarthome-embedded.firebasestorage.app",
+        messagingSenderId: "134141611897",
+        appId: "1:134141611897:web:9127552bc513728c3869a8"
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      var database = firebase.database();
+
+      var tempC = database.ref('office/temperature_celsius/value');
+      //var tempF = database.ref('temperature_fahrenheit');
+      var hu = database.ref('office/humidity/value');
+      var airQ = database.ref('office/corrected_ppm')
+
+      hu.on('value', function(getdata1){
+        var humi = getdata1.val();
+        document.getElementById('humidity').innerHTML = humi
+      })
+
+      tempC.on('value', function(getdata2){
+        var temp = getdata2.val();
+        document.getElementById('tempurature_celsius').innerHTML = temp
+      })
+
+      airQ.on('value', function(getdata3){
+        var air = getdata3.val();
+        document.getElementById('AirQuality').innerHTML = air
+      })
+
+      function updateTelRoomStatus(roomId, status) {
+        const roomDiv = document.querySelector(`.card-square:nth-child(${roomId}) .status`);
+        if (roomDiv) {
+          roomDiv.className = "status"; // Reset class to base "status"
+          if (status === 2) {
+            roomDiv.classList.add("status-green");
+          } else if (status === 0) {
+            roomDiv.classList.add("status-red");
+          } else {
+            roomDiv.classList.add("status-yellow");
+          }
+        }
+      }
+
+      function updateTableStatus(roomId, Tstatus) {
+        const roomDiv = document.querySelector(`.table-col:nth-child(${roomId}) .Tstatus`);
+        if (roomDiv) {
+          roomDiv.className = "Tstatus"; 
+          if (Tstatus === 1) {
+            roomDiv.classList.add("status-green");
+          } else if (Tstatus === 0){
+            roomDiv.classList.add("status-red");
+          }
+        } else {
+          console.error(`No element found for Room ID: ${roomId}`);
+        }
+      }
+
+      database.ref("telroom").on("value", (snapshot) => {
+        if (snapshot.exists()) {
+          const rooms = snapshot.val();
+          Object.keys(rooms).forEach((key, index) => {
+            updateTelRoomStatus(index + 1, rooms[key].isAvailability);
+          }); 
+        }
+      });
+
+      database.ref("Table").on("value", (snapshot) => {
+        if (snapshot.exists()) {
+          const rooms = snapshot.val();
+          Object.keys(rooms).forEach((key) => {
+            const roomId = key; // Use the numeric key directly
+            const status = rooms[key].isAvailable;
+            updateTableStatus(roomId, status);
+          });
+        }
+      });
+
+    </script>
+  </body>
+</html>
